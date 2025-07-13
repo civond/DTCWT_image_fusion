@@ -15,11 +15,14 @@ In this project I replicated <a href="https://ieeexplore.ieee.org/document/13693
     Next, a seperable median filter was applied to each wavelet subband perform nonlinear noise removal. To extract the texture gradient, the Gaussian derivative function was applied in the x and y directions. To fuse the texture gradient information from multiple subbands, the following equations were used:
 </div>
     
-$\Large{TG(x,y) = \sum_{i,\theta}interp(\omega_{i,\theta}\cdot\widehat{TG}_{i,\theta}(x,y))}$, where</br>  
-$\Large{\widehat{TG}_{i,\theta}(x,y)} = \frac{TG_{i,\theta}(x,y)}{max_{x,y}(\widehat{TG}_{i,\theta}(x,y))}$, and </br>
+$\Large{TG(x,y) = \sum_{i,\theta}interp(\omega_{i,\theta}\cdot\widehat{TG}_{i,\theta}(x,y))}$, where
 
- $\Large{\omega_{i,\theta}= \frac{N_i}{\sum{_{x,y}}\widehat{TG}}_{i,\theta}(x,y)^2} $, with $N_i$ representing the number of pixels in each subband (256x256 pixels in this case). Images were then upsampled to the original image size of 512x512.
- </br>
+$\Large{\widehat{TG}_{i,\theta}(x,y)} = \frac{TG_{i,\theta}(x,y)}{max_{x,y}(\widehat{TG}_{i,\theta}(x,y))}$, and 
+$\Large{\omega_{i,\theta}= \frac{N_i}{\sum{_{x,y}}\widehat{TG}}_{i,\theta}(x,y)^2}$, 
+with $N_i$ representing the number of pixels in each subband (256x256 pixels in this case). Images were then upsampled to the original image size of 512x512.
+ 
+ 
+
 
  Put into simplified terms: the texture gradient for each subband is normalized between the range [0,1] and then multiplied by a weight. This is then summed across all bands to calculate $TG_(x,y)$. Below are the results that I got for the subband representing $135^{\circ}$ (aka $-45^{\circ}$). 
  </br>

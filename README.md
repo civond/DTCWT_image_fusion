@@ -35,7 +35,7 @@ with $N_i$ representing the number of pixels in each subband (256x256 pixels in 
     Next, to address the issue of the intensity gradient responding undesirably to ordinary textures within patches of homogeneous texture (ex: the scarf within the Lena image), the intensity gradient must be modulated by the texture gradient in which it is suppressed within textured regions, and unchanged in smooth areas. This is performed by using the following equations.</br></br>
 </div>
 
-$\Large{Activity(x,y) = e^{\mathcal{R}_{half}(\frac{E_{tex}(x,y)}{\alpha} - \beta)}}$, where $\mathcal{R}(\zeta)$ represents a half-wave rectification to suppress negative exponents (in other words, the ReLU function implemented in numpy as np.maximum()). $\alpha$ was chosen to be 2, whereas $\beta$ was chose to be 7.
+$\Large{Activity(x,y) = e^{R_{half}(\frac{E_{tex}(x,y)}{\alpha} - \beta)}}$, where $\mathcal{R}(\zeta)$ represents a half-wave rectification to suppress negative exponents (in other words, the ReLU function implemented in numpy as np.maximum()). $\alpha$ was chosen to be 2, whereas $\beta$ was chose to be 7.
 </br> </br>
 Since the texture features respond in a slightly larger area than desired, an erosion function was implemented with a kernel size [3,3]. Thus, $\Large{E_{text} = \sum_{i,\theta}interp(filtered subband)}$.
 
